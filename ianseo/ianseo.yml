@@ -72,3 +72,17 @@
     ansible.builtin.copy:
       src: ianseo.cnf
       dest: /etc/mysql/mariadb.conf.d/ianseo.cnf
+
+  - name: "Copy Ianseo configuration for Apache2"
+    ansible.builtin.copy:
+      src: ianseo.conf
+      dest: /etc/apache2/conf-available/ianseo.config
+
+  - name: "Enable Ianseo configuration for Apache2"
+    ansible.builtin.command: a2enconf ianseo
+
+  - name: "Restart Apache2"
+    ansible.builtin.command: service apache2 restart
+
+  - name: "Restart MariaDB"
+    ansible.builtin.command: service mariadb restart
