@@ -48,12 +48,17 @@
       src: https://www.ianseo.net/Release/Ianseo_20230401.zip
       dest: /var/www/html/
       remote_src: yes
+    ansible.builtin.file:
+      path: /var/www/html/Common/config.inc.php
+      state: absent
 
   - name: "Change permissions on Ianseo Directory"
     ansible.builtin.file:
       path: /var/www/html/
       state: directory
       mode: a+wX
+      owner: www-data
+      group: www-data
 
   - name: "Tuning PHP8 configuration"
     ansible.builtin.copy:
