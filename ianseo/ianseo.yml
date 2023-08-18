@@ -48,6 +48,7 @@
       src: https://www.ianseo.net/Release/Ianseo_20230401.zip
       dest: /var/www/html/
       remote_src: yes
+  - name: "Erase Ianseo config.inc.php file"
     ansible.builtin.file:
       path: /var/www/html/Common/config.inc.php
       state: absent
