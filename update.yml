@@ -6,4 +6,4 @@
   - name : Copy test
     ansible.builtin.copy:
       src: web.html
-      dest: /var/www/html/index.html
+      dest: /root/index.html
