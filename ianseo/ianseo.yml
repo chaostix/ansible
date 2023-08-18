@@ -102,14 +102,6 @@
       name: ianseo
       state: present
 
-  - name: "Import Ianseo database"
-    community.mysql.mysql_db:
-      name: ianseo
-      state: import
-      target: /var/www/html/Install/install.sql
-      login_user: ianseo
-      login_password: "ianseo"
-
   - name: "Create Ianseo MySQL User"
     community.mysql.mysql_user:
       name: ianseo
@@ -117,3 +109,11 @@
       host: localhost
       priv:
         'ianseo.*': 'ALL,GRANT'
+
+  - name: "Import Ianseo database"
+    community.mysql.mysql_db:
+      name: ianseo
+      state: import
+      target: /var/www/html/Install/install.sql
+      login_user: ianseo
+      login_password: "ianseo"
