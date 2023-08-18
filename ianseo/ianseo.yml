@@ -79,10 +79,13 @@
       dest: /etc/apache2/conf-available/ianseo.config
 
   - name: "Enable Ianseo configuration for Apache2"
-    ansible.builtin.command: "a2enconf ianseo"
+    ansible.builtin.command:
+      cmd: a2enconf ianseo
 
   - name: "Restart Apache2"
-    ansible.builtin.command: "service apache2 restart"
+    ansible.builtin.command:
+      cmd: service apache2 restart
 
   - name: "Restart MariaDB"
-    ansible.builtin.command: "service mariadb restart"
+    ansible.builtin.command:
+      cmd: service mariadb restart
