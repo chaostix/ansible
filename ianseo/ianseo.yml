@@ -54,6 +54,11 @@
       path: /var/www/html/Common/config.inc.php
       state: absent
 
+  - name: "Empty www folder"
+    ansible.builtin.file:
+      path: /var/www/html/indx.html
+      state: absent
+
   - name: "Change permissions on Ianseo Directory"
     ansible.builtin.file:
       path: /var/www/html/
