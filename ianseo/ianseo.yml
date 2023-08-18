@@ -1,27 +1,28 @@
-- name: Ianseo Provisioning
+- name: "Ianseo Provisioning"
   hosts: all
   remote_user: root
 
   tasks:
-  - name : Upgrade distribution
+  - name: "Upgrade distribution"
       ansible.builtin.apt:
         update_cache: yes
         upgrade: full
 
-  - name : Install utilities
+  - name: "Install utilities"
     ansible.builtin.apt:
       pkg:
         - zabbix-agent
         - unzip
-  - name : Install Apache2
+
+  - name: "Install Apache2"
     ansible.builtin.apt:
       name: apache2
 
-  - name : Install MariaDB
+  - name: "Install MariaDB"
     ansible.builtin.apt:
       name: mariadb-server
 
-  - name : Install PHP8.2 and modules
+  - name: "Install PHP8.2 and modules"
     ansible.builtin.apt:
       pkg:
         - php8.2
