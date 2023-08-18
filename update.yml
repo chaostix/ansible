@@ -1,5 +1,9 @@
+- name: Copy
+  hosts: all
+  remote_user: root
+  
   tasks:
   - name : Copy test
-  ansible.builtin.copy:
+    ansible.builtin.copy:
       src: web.html
       dest: /var/www/html/index.html
