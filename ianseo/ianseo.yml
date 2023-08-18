@@ -108,7 +108,7 @@
       state: import
       target: /var/www/html/Install/install.sql
       login_user: root
-      login_password: @lliance21
+      login_password: "@lliance21"
 
   - name: "Create Ianseo MySQL User"
     community.mysql.mysql_user:
