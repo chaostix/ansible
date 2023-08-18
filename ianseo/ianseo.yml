@@ -94,3 +94,22 @@
   - name: "Restart MariaDB"
     ansible.builtin.command:
       cmd: service mariadb restart
+
+  - name: "Create Ianseo database"
+    community.mysql.mysql_db:
+      name: ianseo
+      state: present
+
+  - name: "Import Ianseo database"
+    community.mysql.mysql_db:
+      name: ianseo
+      state: import
+      target: /var/www/html/Install/install.sql
+
+  - name: "Create Ianseo MySQL User"
+    community.mysql.mysql_user:
+      name: ianseo
+      password: ianseo
+      host: localhost
+      priv:
+        'ianseo.*': 'ALL,GRANT'
