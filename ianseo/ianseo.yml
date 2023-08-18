@@ -76,7 +76,7 @@
   - name: "Copy Ianseo configuration for Apache2"
     ansible.builtin.copy:
       src: ianseo.conf
-      dest: /etc/apache2/conf-available/ianseo.config
+      dest: /etc/apache2/conf-available/ianseo.conf
 
   - name: "Enable Ianseo configuration for Apache2"
     ansible.builtin.command:
