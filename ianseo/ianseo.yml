@@ -1,0 +1,37 @@
+- name: Ianseo Provisioning
+  hosts: all
+  remote_user: root
+
+  tasks:
+  - name : Upgrade distribution
+      ansible.builtin.apt:
+        update_cache: yes
+        upgrade: full
+
+  - name : Install utilities
+    ansible.builtin.apt:
+      pkg:
+        - zabbix-agent
+        - unzip
+  - name : Install Apache2
+    ansible.builtin.apt:
+      name: apache2
+
+  - name : Install MariaDB
+    ansible.builtin.apt:
+      name: mariadb-server
+
+  - name : Install PHP8.2 and modules
+    ansible.builtin.apt:
+      pkg:
+        - php8.2
+        - php8.2-curl
+        - php8.2-mysql
+        - php8.2-gd
+        - php8.2-mbstring
+        - php8.2-mcrypt
+        - php8.2-xml
+        - php8.2-zip
+        - php8.2-imagick
+        - imagemagick
+        - libapache2-mod-php8.2
