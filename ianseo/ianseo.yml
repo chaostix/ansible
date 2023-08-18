@@ -20,7 +20,9 @@
 
   - name: "Install MariaDB"
     ansible.builtin.apt:
-      name: mariadb-server
+      pkg:
+        - mariadb-server
+        - python3-mysqldb
 
   - name: "Install PHP8.2 and modules"
     ansible.builtin.apt:
@@ -105,6 +107,9 @@
       name: ianseo
       state: import
       target: /var/www/html/Install/install.sql
+      check_implicit_admin: true
+      login_user: root
+      login_password: "@lliance21"
 
   - name: "Create Ianseo MySQL User"
     community.mysql.mysql_user:
