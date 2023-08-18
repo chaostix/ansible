@@ -36,3 +36,31 @@
         - php8.2-imagick
         - imagemagick
         - libapache2-mod-php8.2
+
+  - name: "Create Ianseo Directory"
+    ansible.builtin.file:
+      path: /var/www/html/
+      state: directory
+      mode: a+wX
+
+  - name: "Download and extract last version of Ianseo"
+    ansible.builtin.unarchive:
+      src: https://www.ianseo.net/Release/Ianseo_20230401.zip
+      dest: /var/www/html/
+      remote_src: yes
+
+  - name: "Change permissions on Ianseo Directory"
+    ansible.builtin.file:
+      path: /var/www/html/
+      state: directory
+      mode: a+wX
+
+  - name: "Tuning PHP8 configuration"
+    ansible.builtin.copy:
+      src: ianseo.ini
+      dest: /etc/php/8.2/apache2/conf.d/ianseo.ini
+
+  - name: "Tuning MariaDB configuration"
+    ansible.builtin.copy:
+      src: ianseo.cnf
+      dest: /etc/mysql/mariadb.conf.d/ianseo.cnf
